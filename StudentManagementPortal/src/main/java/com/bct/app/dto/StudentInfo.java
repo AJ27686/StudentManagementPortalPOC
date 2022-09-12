@@ -1,16 +1,34 @@
 package com.bct.app.dto;
 
-import javax.persistence.*;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name="student_info")
 public class StudentInfo {
 	
-	@OneToOne(targetEntity= SubjectMarks.class)
+	@OneToOne(targetEntity= SubjectMarks.class, fetch = FetchType.LAZY)
+	//@JoinColumn(name = "studentId")
 	SubjectMarks subjectMarks;
 	
 	@OneToMany(targetEntity = Subject.class)
-	Subject subject;
+//	@JoinColumn(name = "subjectCode")
+	List<Subject> subject;
+	
+	@ManyToOne
+	//@JoinColumn(name = "branchId")
+	BranchInfo branchInfo;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

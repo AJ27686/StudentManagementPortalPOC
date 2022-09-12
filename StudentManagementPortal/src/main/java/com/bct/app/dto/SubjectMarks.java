@@ -3,6 +3,7 @@ package com.bct.app.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -19,6 +20,7 @@ public class SubjectMarks {
 	@Column(name="student_id")
 	private int studentId;
 	
+	@Id
 	@Column(name="subject_code")
 	private int subjectCode;
 	
